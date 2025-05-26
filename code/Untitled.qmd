@@ -6,7 +6,7 @@ editor: visual
 
 ## Homework 3
 
-# Part 1: Setup
+# Part 1. Setup
 
 ```{r}
 # read in libraries
@@ -17,6 +17,8 @@ library(janitor)
 library(readxl)
 ```
 
-# Part 2: Problems
+# Part 2. Problems
 
+## a.
 
+To summarize the data and compare a response variable between categories, I could calculate the mean comprehensions core to compare reading effectiveness across different locations. This comparison would be informative because different environments might offer varying levels of comfort or light, which could impact my focus, and consequently, how well I understood the material.
