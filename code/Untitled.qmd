@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+format: revealjs
+editor: visual
+---
+
+## Homework 3
+
+# Part 1: Setup
+
+```{r}
+# read in libraries
+library(tidyverse)
+library(here)
+library(flextable)
+library(janitor)
+library(readxl)
+```
+
+# Part 2: Problems
+
+
