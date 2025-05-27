@@ -2,7 +2,6 @@
 title: "Untitled"
 format: pdf
 editor: visual
-default-image-extension: png
 ---
 
 ## Homework 3
@@ -74,5 +73,18 @@ table1 # displaying the table
 An affective visualization for my personal reading data project can be visually represented with orbs in a jar, where each orb represents an individual reading session. The color of the orb can represent the comprehension: vibrant green colors for high comprehension, fading from purple to muddy brown hues for low comprehension. The surface of the orb can represent the distractions, becoming rougher, more jagged as the number of distractions grows. Also, the total time spent reading can be represented through the size of the orb.
 
 ## b.
-![Jar of reading orbs](/Users/tanveersingh/github/ENVS-193DS_homework-03/IMG_0317.png)
+SKETCH HERE
 
+## c.
+![Jar of reading orbs](/Users/tanveersingh/github/ENVS-193DS_homework-03/IMG_0317.png)
+## d.
+
+My affective visualization shows a jar containing many orbs. Each orb is an independent reading session, which is affected by length of reading, comprehension, and distractions. I took inspiration from the examples provided of Jill Pelto's paintings. I drew my peice on my iPad. I started off with a drawing of a jar. I then filled the jar with different size orbs that represent different sessions of reading. Each orb is to be different in size, color, and defects on the surface.
+
+# Problem 3. Statistical Critique
+
+## a.
+
+The statistical tests used by the author to address their main research question are: Welch’s t-test, Mann–Whitney’s U-test, Kruskal–Wallis test, Spearman’s correlation coefficient by rank test.
+
+![Kruskal-Wallis test](/Users/tanveersingh/github/ENVS-193DS_homework-03/statistical_test.png)
