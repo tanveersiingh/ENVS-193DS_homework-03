@@ -92,3 +92,11 @@ The statistical tests used by the author to address their main research question
 
 The author clearly represents their statistics in the figure, with well labeled axes and depth scale that increases downwards. Each of the four species include test statistics such as medians, standard deviations, interquartile ranges, and depth extremes. P-values from Kruskal–Wallis tests are clearly displayed, making statistical comparisons across regions clear and easy to interpret.
 
+
+## c.
+
+The author handles visual clutter well by using distinct, consistent symbols (open circles, closed circles, triangles, box plots) and seperating each species into their own panel. The data:ink ratio is high, but the visual elements have meaningful information (depth ranges, medians, p-values). Overall, this figure is information dense yet clear and visually effective.
+
+## d.
+
+I would recommend adding a sample size for each box plot in the legend, which can help readers evaluate the variability of the summary statistics. Instead of using open and closed circles to differentiate between night and day, I would recommend adding color to enhance the immediate visual distinction without overwhelming the figure, I would add clarity in the legend, specifically the triangles and boxes to make it easier to understand what they represent. Lastly, a summary of the findings at the bottom of the figure that quickly helps the reader grasp significant patterns without having to interpret each subplot individually. 
