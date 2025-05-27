@@ -15,10 +15,36 @@ library(here)
 library(flextable)
 library(janitor)
 library(readxl)
+
+# read in personal data
+mydata <- read_csv("Personal Data Project - Sheet1.csv")
 ```
 
 # Part 2. Problems
 
 ## a.
 
-To summarize the data and compare a response variable between categories, I could calculate the mean comprehensions core to compare reading effectiveness across different locations. This comparison would be informative because different environments might offer varying levels of comfort or light, which could impact my focus, and consequently, how well I understood the material.
+To summarize the data and compare a response variable between categories, I could calculate the pages per minute for each session to compare reading effectiveness across different locations. This comparison would be informative because different environments might offer varying levels of comfort or light, which could impact my focus, and consequently, how well I understood the material.
+
+## b.
+
+```{r}
+df <- clean_names(mydata) |> # clean column names
+  # adding pages_per_minute column
+  mutate(pages_per_minute = ifelse(total_time_of_reading > 0,  number_of_pages / total_time_of_reading, 0))
+
+mean_pages_per_minute <- df %>%
+  group_by(location) %>%
+  summarise(Mean_PPM = mean(pages_per_minute))
+
+ggplot(df, aes(x = location,
+               y = pages_per_minute)) +
+         geom_boxplot(aes(fill = location)) +
+  geom_jitter(width = 0.2, size = 1, color = "black", alpha = 0.7) +
+  labs(
+    x = "Reading Location",
+    y = "Pages Per Minute",
+    title = "Reading Efficiency (Pages Per Minute) by Location"
+  )
+```
+
