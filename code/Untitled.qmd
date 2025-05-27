@@ -88,3 +88,7 @@ My affective visualization shows a jar containing many orbs. Each orb is an inde
 The statistical tests used by the author to address their main research question are: Welch’s t-test, Mann–Whitney’s U-test, Kruskal–Wallis test, Spearman’s correlation coefficient by rank test.
 
 ![Kruskal-Wallis test](/Users/tanveersingh/github/ENVS-193DS_homework-03/statistical_test.png)
+## b.
+
+The author clearly represents their statistics in the figure, with well labeled axes and depth scale that increases downwards. Each of the four species include test statistics such as medians, standard deviations, interquartile ranges, and depth extremes. P-values from Kruskal–Wallis tests are clearly displayed, making statistical comparisons across regions clear and easy to interpret.
+
