@@ -65,3 +65,12 @@ table1 <- flextable(mean_pages_per_minute) |> # create table using flextable
 
 table1 # displaying the table
 ```
+
+# Problen 2, Affective visualization
+
+## a. 
+
+An affective visualization for my personal reading data project can be visually represented with orbs in a jar, where each orb represents an individual reading session. The color of the orb can represent the comprehension: vibrant green colors for high comprehension, fading from purple to muddy brown hues for low comprehension. The surface of the orb can represent the distractions, becoming rougher, more jagged as the number of distractions grows. Also, the total time spent reading can be represented through the size of the orb.
+
+
+
