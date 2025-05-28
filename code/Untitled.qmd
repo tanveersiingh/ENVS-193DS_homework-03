@@ -15,9 +15,10 @@ library(here)
 library(flextable)
 library(janitor)
 library(readxl)
+library(officer)
 
 # read in personal data
-mydata <- read_csv("Personal Data Project - Sheet1.csv")
+mydata <- read_csv("data/Personal Data Project - Sheet1.csv")
 ```
 
 # Part 2. Problems
@@ -43,6 +44,11 @@ ggplot(df, # plotting the data
                y = pages_per_minute)) + # Pages per minute on the y axis
          geom_boxplot(aes(fill = location)) + # creating boxplot
   geom_jitter(width = 0.2, size = 1, color = "black", alpha = 0.7) + # adding the underlying data
+  scale_fill_manual(values = c( # add different colors than default
+    "Balcony" = "#1f77b4", # blue for balcony
+    "Bed" = "#ff7f0e" # orange for bed
+  )) +
+  theme_bw() + # add theme for aesthetics
   labs( # label function to rename labels
     x = "Reading Location", # new x axis title
     y = "Pages Per Minute", # new y axis title
@@ -52,7 +58,7 @@ ggplot(df, # plotting the data
 
 ## c.
 
-Data collected from reading sessions between May 12-26, 2025. Efficiency measured as pages read per minute
+Figure 1. Reading Efficiency (Pages Per Minute) by Location. Box plots display the distribution and summary statistics of reading efficiency at two locations: the balcony and the bed. While both locations show similar median reading speeds, the balcony shows a tighter distribution compared to the wider spread of values observed for reading in bed.
 
 ## d.
 
@@ -60,8 +66,10 @@ Data collected from reading sessions between May 12-26, 2025. Efficiency measure
 table1 <- flextable(mean_pages_per_minute) |> # create table using flextable
   colformat_double(j = "Mean_PPM", digits = 1) |> # rounding to nearest decimal
   autofit() |> # autofit function to make everything fit
-  theme_booktabs() |> # theme
-  align(align = "center", part = "all") # center align all parts of the table
+  theme_zebra() |> # theme
+  align(align = "center", part = "all") |> # center align all parts of the table
+  border_outer(border = fp_border(color = "black", width = 2)) |> # adding outer border
+  border_inner(border = fp_border(color = "grey", width = 1)) # adding inner border
 
 table1 # displaying the table
 ```
