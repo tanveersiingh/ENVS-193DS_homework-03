@@ -51,4 +51,4 @@ All code is in the `code` folder.
 
 ## Rendered output
 
-The rendered key is [here](file:///Users/tanveersingh/github/ENVS-193DS_homework-03/code/homework3.html).
+The rendered key is [here](file:///Users/tanveersingh/github/ENVS-193DS_homework-03/code/homework3.html)
