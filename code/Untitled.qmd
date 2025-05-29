@@ -9,6 +9,7 @@ editor: visual
 # Part 1. Setup
 
 ```{r}
+#| warning: false
 # read in libraries
 library(tidyverse)
 library(here)
@@ -18,14 +19,14 @@ library(readxl)
 library(officer)
 
 # read in personal data
-mydata <- read_csv("data/Personal Data Project - Sheet1.csv")
+mydata <- read_csv(here::here("data", "Personal Data Project - Sheet1.csv"))
 ```
 
 # Part 2. Problems
 
 ## a.
 
-To summarize the data and compare a response variable between categories, I could calculate the pages per minute for each session to compare reading effectiveness across different locations. This comparison would be informative because different environments might offer varying levels of comfort or light, which could impact my focus, and consequently, how well I understood the material.
+To summarize the data and compare a response variable between categories, I will calculate the median pages per minute, by dividing the numbers of pages read by the total time of the read, for each session to compare reading effectiveness across different locations. This comparison would be informative because different environments might offer varying levels of comfort, light, or distraction which could impact my focus, and consequently, how well I understood the material.
 
 ## b.
 
@@ -34,10 +35,16 @@ df <- clean_names(mydata) |> # clean column names
   # adding pages_per_minute column
   mutate(pages_per_minute = ifelse(total_time_of_reading > 0,  number_of_pages / total_time_of_reading, 0))
 
-mean_pages_per_minute <- df |> # create new data frame for mean pages per minute
+df_summary <- df |> # create new data frame for mean pages per minute
   group_by(location) |> # group by location
-  summarise(Mean_PPM = mean(pages_per_minute)) |> # calculate the mean
-  rename("Location" = location) # rename the location to be capitalized
+  summarise(
+    N = n(),                               # Count of observations in each group
+    Mean_PPM = mean(pages_per_minute, na.rm = TRUE),    # Mean Pages Per Minute
+    Median_PPM = median(pages_per_minute, na.rm = TRUE), # Median Pages Per Minute
+    SD_PPM = sd(pages_per_minute, na.rm = TRUE),        # Standard Deviation of PPM
+    IQR_PPM = IQR(pages_per_minute, na.rm = TRUE),      # Interquartile Range of PPM
+    Min_PPM = min(pages_per_minute, na.rm = TRUE),      # Minimum PPM
+    Max_PPM = max(pages_per_minute, na.rm = TRUE)) # calculate the mean
 
 ggplot(df, # plotting the data
        aes(x = location, # location on x axis
@@ -63,8 +70,18 @@ Figure 1. Reading Efficiency (Pages Per Minute) by Location. Box plots display t
 ## d.
 
 ```{r}
-table1 <- flextable(mean_pages_per_minute) |> # create table using flextable
-  colformat_double(j = "Mean_PPM", digits = 1) |> # rounding to nearest decimal
+table1 <- flextable(df_summary) |> # create table using flextable
+  colformat_double(digits = 2) |> # rounding to nearest decimal
+  set_header_labels( # changing header labels
+    location = "Location", # capitalize location
+    N = "Count", # cleaning the header names
+    Mean_PPM = "Mean PPM",
+    Median_PPM = "Median PPM",
+    SD_PPM = "Std. Dev. PPM",
+    IQR_PPM = "IQR PPM",
+    Min_PPM = "Min PPM",
+    Max_PPM = "Max PPM"
+  ) |>
   autofit() |> # autofit function to make everything fit
   theme_zebra() |> # theme
   align(align = "center", part = "all") |> # center align all parts of the table
@@ -84,7 +101,9 @@ An affective visualization for my personal reading data project can be visually 
 SKETCH HERE
 
 ## c.
-![Jar of reading orbs](/Users/tanveersingh/github/ENVS-193DS_homework-03/IMG_0317.png)
+
+![Jar of reading orbs](../IMG_0317.png)
+
 ## d.
 
 My affective visualization shows a jar containing many orbs. Each orb is an independent reading session, which is affected by length of reading, comprehension, and distractions. I took inspiration from the examples provided of Jill Pelto's paintings. I drew my peice on my iPad. I started off with a drawing of a jar. I then filled the jar with different size orbs that represent different sessions of reading. Each orb is to be different in size, color, and defects on the surface.
@@ -95,7 +114,8 @@ My affective visualization shows a jar containing many orbs. Each orb is an inde
 
 The statistical tests used by the author to address their main research question are: Welch’s t-test, Mann–Whitney’s U-test, Kruskal–Wallis test, Spearman’s correlation coefficient by rank test.
 
-![Kruskal-Wallis test](/Users/tanveersingh/github/ENVS-193DS_homework-03/statistical_test.png)
+![Kruskal-Wallis test](../statistical_test.png)
+
 ## b.
 
 The author clearly represents their statistics in the figure, with well labeled axes and depth scale that increases downwards. Each of the four species include test statistics such as medians, standard deviations, interquartile ranges, and depth extremes. P-values from Kruskal–Wallis tests are clearly displayed, making statistical comparisons across regions clear and easy to interpret.
